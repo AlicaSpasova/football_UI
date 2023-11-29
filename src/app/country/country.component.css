@@ -1,0 +1,80 @@
+:host {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    font-size: 14px;
+    color: #333;
+    box-sizing: border-box;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    margin: 8px 0;
+  }
+
+  p {
+    margin: 0;
+  }
+
+  .content {
+    display: flex;
+    margin: 82px auto 32px;
+    padding: 0 16px;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .country-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 16px;
+  }
+
+  .country-container .country:not(:last-child) {
+    margin-right: 0;
+  }
+
+  .country-container .country:not(.highlight-country) {
+    cursor: pointer;
+  }
+
+  .country-container .country:not(.highlight-country):hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 17px rgba(0, 0, 0, 0.35);
+  }
+
+  .country-container .country:not(.highlight-country):hover .material-icons path {
+    fill: rgb(105, 103, 103);
+  }
+
+  a,
+  a:visited,
+  a:hover {
+    color: #1976d2;
+    text-decoration: none;
+  }
+
+  a:hover {
+    color: #125699;
+  }
+
+  /* Responsive Styles */
+  @media screen and (max-width: 767px) {
+    .country-container > *:not(.circle-link) {
+      width: 100%;
+    }
+
+    .country:not(.highlight-country) {
+      height: 16px;
+      margin: 8px 0;
+    }
+
+    .country.highlight-country span {
+      margin-left: 72px;
+    }
+  }

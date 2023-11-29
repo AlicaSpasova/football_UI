@@ -1,0 +1,18 @@
+<div class="content" role="main">
+
+    <h2>{{ title | uppercase}}</h2>
+  
+    <!-- Countries -->
+    <div class="country-container">
+      <div *ngFor="let country of items" class="country country-small">
+        <bt-country id=`{country.name}Selected` [item]="country" (selectedCountry)="onSelectedCountry($event)"></bt-country>
+      </div>
+    </div>
+  
+    <!-- Table -->
+    <div *ngIf="selectedCountry">
+      <pm-standings-table [country]="selectedCountry"></pm-standings-table>
+    </div>
+  
+  </div>
+  
