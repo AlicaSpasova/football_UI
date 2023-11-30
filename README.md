@@ -39,3 +39,11 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+
+## Publish to GitHub Pages
+
+```
+npm install -g angular-cli-ghpages  
+ngh --dir=dist/apm-new
+ng build --prod --base-href https://AlicaSpasova.github.io/football_UI/
+```
