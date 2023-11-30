@@ -1,3 +1,17 @@
+# Project's Title
+
+Football API
+
+## Project Description
+
+This is a small football (soccer) updates application that follows results from the top 5 European leagues.
+For this project were used such Angular technologies as:
+1. Angular routings
+2. Design table via MatTableModule
+3. RxJs for GET requests to API
+4. QueryParams to pass data between the components
+5. Add MatSnackBarModule to explain to user if something goes wrong with GET requests from API
+
 # ApmNew
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.1.4.
