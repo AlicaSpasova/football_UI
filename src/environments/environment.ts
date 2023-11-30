@@ -5,7 +5,7 @@
 export const environment = {
   production: false,
   xRapidapiHost: "v3.football.api-sports.io",
-  xRapidapiKey: "8136b67b6b9e31d7fb726cfcb9a72712",
+  xRapidapiKey: "cd5f3b9957d553f4fb0130448a9f5b83",
   url: "https://v3.football.api-sports.io"
 };
 

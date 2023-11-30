@@ -2,6 +2,9 @@
 import { Standing } from "./standing-response.model";
 
 export interface LeaguesList {
+    errors: {
+        access: string
+    }
     response: ResponseLeague[]
 }
 

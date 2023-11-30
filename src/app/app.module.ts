@@ -6,7 +6,8 @@ import { AppComponent } from './app.component';
 import { CountryComponent } from './country/country.component';
 import { StandingsTableComponent } from './standings-table/standings-table.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {MatTableModule} from '@angular/material/table';
+import { MatTableModule} from '@angular/material/table';
+import { MatSnackBarModule} from '@angular/material/snack-bar';
 import { CountryButtonComponent } from './country-button/country-button.component';
 import { AppRoutingModule } from './app-routing.module';
 import { TeamComponent } from './team/team.component';
@@ -25,6 +26,7 @@ import { TeamComponent } from './team/team.component';
     HttpClientModule,
     BrowserAnimationsModule,
     MatTableModule,
+    MatSnackBarModule,
     AppRoutingModule
   ],
   exports: [AppRoutingModule],

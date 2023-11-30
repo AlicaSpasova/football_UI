@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { FootballService } from '../services/football.service';
 import { Country } from '../models/country.model';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'pm-team',
@@ -26,7 +27,8 @@ export class TeamComponent implements OnInit, OnDestroy {
   constructor(
     public footballService: FootballService,
     public activatedRoute: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private snackBar: MatSnackBar
   ) { }
 
   ngOnInit(): void {
@@ -41,8 +43,14 @@ export class TeamComponent implements OnInit, OnDestroy {
   }
 
   loadTable() {
-    this.subscriptions.dataSourceSubscription = this.footballService.getFixtures(this.teamId, this.leagueId, this.seasonYear).subscribe((res) => {
-      this.dataSource = res;
+    this.subscriptions.dataSourceSubscription = this.footballService.getFixtures(this.teamId, this.leagueId, this.seasonYear).subscribe(
+      (res) => {
+        if (res.errors.access === undefined) {
+          this.dataSource = res.response;
+        } else {
+          this.snackBar.open(res.errors.access);
+          this.dataSource = [];
+        }
     })
   }
 

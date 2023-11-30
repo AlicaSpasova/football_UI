@@ -1,6 +1,9 @@
 import { League } from "./league-response.model";
 
 export interface FixturesList {
+    errors: {
+        access: string
+    }
     response: ResponseFixture[]
 };
 

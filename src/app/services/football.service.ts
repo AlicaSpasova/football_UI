@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from "@angular/common/http";
-import { map, shareReplay } from 'rxjs';
+import { map } from 'rxjs';
 import { LeaguesList, ResponseLeague } from '../models/league-response.model';
 import { Country } from '../models/country.model';
 import { Standing, StandingsList } from '../models/standing-response.model';
@@ -29,7 +29,7 @@ export class FootballService {
       })
       .pipe(
         map((data) => {
-          return data.body.response as ResponseLeague[];
+          return data.body as LeaguesList;
         })
       );
 	}
@@ -47,7 +47,11 @@ export class FootballService {
       })
       .pipe(
         map((data) => {
-          return data.body.response[0].league.standings as Standing[];
+          if(data.body.errors.access) {
+            return null;
+          } else {
+            return data.body.response[0].league.standings as Standing[];
+          }
         }),
       );
 	}
@@ -65,7 +69,11 @@ export class FootballService {
       })
       .pipe(
         map((data) => {
-          return data.body.response as ResponseFixture[];
+          if(data.body.errors.access) {
+            return null;
+          } else {
+            return data.body as FixturesList;
+          }
         })
       );
 	}

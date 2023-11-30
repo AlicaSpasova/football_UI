@@ -3,6 +3,7 @@ import { Country } from '../models/country.model';
 import { FootballService } from '../services/football.service';
 import { Subscription } from 'rxjs';
 import { Router } from '@angular/router';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'pm-standings-table',
@@ -24,7 +25,8 @@ export class StandingsTableComponent implements OnInit, OnChanges, OnDestroy {
 
   constructor(
     public footballService: FootballService,
-    private router: Router
+    private router: Router,
+    private snackBar: MatSnackBar
   ) {}
 
   ngOnInit(): void {
@@ -37,12 +39,19 @@ export class StandingsTableComponent implements OnInit, OnChanges, OnDestroy {
   }
 
   loadTable() {
-    this.subscriptions.dataSourceSubscription = this.footballService.getLeague(this.country).subscribe((res) => {
-      this.leagueId = res[0].league.id;
-      this.seasonYear = res[0].seasons[0].year;
-      this.footballService.getStendings(res[0].league.id, res[0].seasons[0].year).subscribe((data) => {
-        this.dataSource = data[0];
-      })
+    this.subscriptions.dataSourceSubscription = this.footballService.getLeague(this.country)
+    .subscribe(
+      (res) => {
+        if (res.errors.access === undefined) {
+          this.leagueId = res.response[0].league.id;
+          this.seasonYear = res.response[0].seasons[0].year;
+          this.footballService.getStendings(res.response[0].league.id, res.response[0].seasons[0].year).subscribe((data) => {
+            this.dataSource = data[0];
+          })
+        } else {
+          this.snackBar.open(res.errors.access);
+          this.dataSource = [];
+        }
     })
   }
 
